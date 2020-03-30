@@ -36,3 +36,94 @@
     transform: rotate(360deg);
   }
 }
+
+/* Styling Navbar hover */
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0px;
+  background-color: #f9f9f9;
+  /* min-width: 160px; */
+  width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 5px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Components inside Sign In in NavBar */
+
+/* Logo Image */
+
+.logo-brand {
+  width: 130px;
+  position: relative;
+}
+ /* Logo Brand */
+
+ .brand {
+   font-size: 25px;
+   margin-right: 25%;
+ }
+
+
+/* Button Sign In */
+
+.btn-signin {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color: #FFFFFF;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  margin-top: 10px;
+  padding: 8px 30px;
+  background-color: #000000;
+  border: solid #000000 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+  
+.btn-signin:hover {
+  background: #8F8F8F;
+  border: solid #8F8F8F 1px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  text-decoration: none;
+}
+
+/* Link to singup */
+
+.small-notification {
+  font-size: 12px;
+}
+
+/* Shopping bag */
+
+.list-items {
+  font-size: 14px;
+}
+
+#shop-bag {
+  height: 100px;
+  color: red;
+  padding-top: 10%;
+}
