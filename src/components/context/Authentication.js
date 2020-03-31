@@ -14,7 +14,7 @@ class AuthProvider extends React.Component {
       password: ''
     },
     formLogin: {
-      email: '',
+      username: '',
       password: ''
     },
     currentUser: {},
@@ -36,7 +36,7 @@ class AuthProvider extends React.Component {
         }));
       })
       .catch(err =>
-        console.log('Error while getting the user: ', err.response.data)
+        console.log('Error while getting the user: ', err)
       );
   }
 
@@ -102,7 +102,7 @@ class AuthProvider extends React.Component {
         }));
         this.props.history.push('/');
       })
-      .catch(err => alert('Error while logout: ', err));
+      .catch(err => console.log('Error while logout: ', err));
   };
 
   render() {

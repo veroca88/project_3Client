@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import {BrowserRouter} from 'react-router-dom'
-import AuthProvider from './components/Helpers/Aunthentication'
+import AuthProvider from './components/context/Authentication'
 
 ReactDOM.render(
   <BrowserRouter>

@@ -52,7 +52,8 @@
   background-color: #f9f9f9;
   /* min-width: 160px; */
   width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding-top: 10px;
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
   z-index: 1;
 }
 
@@ -116,6 +117,11 @@
   font-size: 12px;
 }
 
+.small-notification a {
+  display: inline;
+  margin: 0;
+}
+
 /* Shopping bag */
 
 .list-items {
@@ -125,5 +131,13 @@
 #shop-bag {
   height: 100px;
   color: red;
-  padding-top: 10%;
+  padding-top: 5%;
+}
+
+.name-display {
+  text-align: left;
+}
+
+.value-display {
+  text-align: right;
 }
