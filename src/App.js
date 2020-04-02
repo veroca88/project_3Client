@@ -4,8 +4,9 @@ import {Switch, Route} from 'react-router-dom'
 //Components
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
-import Signup from "./components/Authentication/Signup"
-import Login from "./components/Authentication/Login"
+import Signup from "./components/Authentication/Signup";
+import Login from "./components/Authentication/Login";
+import Profile from "./components/User/Profile"
 
 //Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,6 +22,7 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
+        <Route exact path='/profile' component={Profile} />
         {/* <Route exact path='/private' component={Private} /> */}
       </Switch>
       <footer>

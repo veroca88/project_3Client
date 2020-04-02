@@ -7,7 +7,7 @@ export default function NavbarPage() {
     <AuthContext.Consumer>
       {context => {
         const { isLoggedIn } = context.state;
-        console.log(context.state.currentUser)
+        console.log(`current user ================`, context.state.currentUser)
         return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <img className="logo-brand" src="logo-brand.png" alt="logo brand"></img>
@@ -41,20 +41,24 @@ export default function NavbarPage() {
         {isLoggedIn ? (
             <>
           <Nav.Link onClick={context.handleLogout}>Logout</Nav.Link>
+          <Nav.Link href="/profile">My account </Nav.Link>
             </>
           ) : (
+            <>   
           <div className="dropdown">
             <Nav.Link>Sign In</Nav.Link>
             <div className="dropdown-content">
-              <button className="btn-signin" href="/login">
-                Sign in
+              <button><a  className="btn-signin" href="/login">
+                Login
+              </a>
               </button>
-              <a href="#"> My account </a>
+              <a href="/login"> My account </a>
               <a className="small-notification" href="/signup">
                 Not a member yet? Join here
               </a>
             </div>
-          </div>            
+          </div>
+          </>            
           )}
           <div className="dropdown">
             <Nav.Link>Shopping Bag (0)</Nav.Link>

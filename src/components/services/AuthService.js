@@ -17,7 +17,13 @@ const AUTH_SERVICE = {
   },
 
   login(userData) {
+    // passport.authenticate('local'),
+    // console.log('user data in the service: ', userData)
     return service.post('/api/login', userData);
+  },
+
+  update(userData) {
+    return service.post('/api/update', userData);
   },
 
   logout() {

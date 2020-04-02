@@ -21,14 +21,14 @@ function Signup() {
               <Redirect to="/" />
             ) : (
               <>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                      <div class="card card-signin my-5">
-                        <div class="card-body">
-                          <h5 class="card-title text-center">BECOME A MEMBER</h5>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                      <div className="card card-signin my-5">
+                        <div className="card-body">
+                          <h5 className="card-title text-center">BECOME A MEMBER</h5>
                           <form
-                            class="form-signin"
+                            className="form-signin"
                             id="form"
                             onSubmit={handleSignupSubmit}
                           >
@@ -80,7 +80,7 @@ function Signup() {
                               <div className="error-message">{message}</div>
                             )}
                             <button
-                              class="btn btn-lg btn-warning btn-block text-uppercase"
+                              className="btn btn-lg btn-warning btn-block text-uppercase"
                               type="submit"
                             >
                               Signup
