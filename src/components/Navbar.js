@@ -10,23 +10,23 @@ export default function NavbarPage() {
         console.log(`current user ================`, context.state.currentUser)
         return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-      <img className="logo-brand" src="logo-brand.png" alt="logo brand"></img>
+      {/* <img className="logo-brand" src="logo-brand.png" alt="logo brand"></img> */}
       <Navbar.Brand className="brand" href="/">
-        What to Wear
+        Ecommerce
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link>Daily Inspiration</Nav.Link>
           <div className="dropdown">
-            <Nav.Link>Women</Nav.Link>
-            <div className="dropdown-content">
+            <Nav.Link href="/products">Products</Nav.Link>
+            {/* <div className="dropdown-content">
               <a href="#"> New Arrivals </a>
               <a href="#"> Offers </a>
               <a href="#"> Trending Now </a>
               <a href="#"> Shop by Category </a>
               <a href="#"> Save the Planet </a>
-            </div>
+            </div> */}
           </div>
           <div className="dropdown">
             <Nav.Link>BestSellers</Nav.Link>
@@ -48,10 +48,11 @@ export default function NavbarPage() {
           <div className="dropdown">
             <Nav.Link>Sign In</Nav.Link>
             <div className="dropdown-content">
-              <button><a  className="btn-signin" href="/login">
+              <Nav.Link href="/login">Login</Nav.Link>
+              {/* <button><a className="btn-signin" href="/login">
                 Login
               </a>
-              </button>
+              </button> */}
               <a href="/login"> My account </a>
               <a className="small-notification" href="/signup">
                 Not a member yet? Join here
