@@ -22,10 +22,6 @@ const AUTH_SERVICE = {
     return service.post('/api/login', userData);
   },
 
-  update(userData) {
-    return service.post('/api/update', userData);
-  },
-
   logout() {
     return service.post('/api/logout', {});
   },

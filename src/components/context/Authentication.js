@@ -81,42 +81,39 @@ class AuthProvider extends React.Component {
     }))
   }
 
-  //SUBMIT UPDATE PROFILE
-  handleUpdateSubmit = e => {
-    e.preventDefault();
-    // console.log(this.state.formSignup);
+  // //SUBMIT UPDATE PROFILE
+  // handleUpdateSubmit = e => {
+  //   e.preventDefault();
+  //   // console.log(this.state.formSignup);
 
-    // AUTH_SERVICE.signup({ username, email, password })
-    // the same as above        ^^^^^^
-    AUTH_SERVICE.update(this.state.currentUser)
-      .then(responseFromServer => {
-        // console.log('res from server: ', responseFromServer);
-        const {
-          data: { user, message }
-        } = responseFromServer;
+  //   // AUTH_SERVICE.signup({ username, email, password })
+  //   // the same as above        ^^^^^^
+  //   AUTH_SERVICE.update(this.state.currentUser)
+  //     .then(responseFromServer => {
+  //       console.log('res from server::::::::::::::::::::::: ', responseFromServer);
 
-        this.setState(prevState => ({
-          ...prevState,
-          currentUser: {
-            username: '',
-            email: '',
-            profilePic: ''
-          },
-          isLoggedIn: true
-        }));
-        alert(`${message}`);
-        this.props.history.push('/home');
-      })
-      .catch(err => {
-        // console.log(err.response);
-        if (err.response && err.response.data) {
-          this.setState(prevState => ({
-            ...prevState,
-            message: err.response.data.message
-          }));
-        }
-      });
-  };
+  //       this.setState(prevState => ({
+  //         ...prevState,
+  //         currentUser: {
+  //           username: '',
+  //           email: '',
+  //           profilePic: ''
+  //         },
+  //         isLoggedIn: true
+  //       }));
+  //       console.log(`this is current user update >>>>>>>>>>>>>`, this.state.currentUser)
+  //       this.props.history.push('/home');
+  //     })
+  //     .catch(err => {
+  //       // console.log(err.response);
+  //       if (err.response && err.response.data) {
+  //         this.setState(prevState => ({
+  //           ...prevState,
+  //           message: err.response.data.message
+  //         }));
+  //       }
+  //     });
+  // };
 
 
 
@@ -213,7 +210,7 @@ class AuthProvider extends React.Component {
   };
 
   render() {
-    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateSubmit, handleUpdateInput } = this;
+    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateInput } = this;
     return (
       <>
         <AuthContext.Provider
@@ -224,7 +221,6 @@ class AuthProvider extends React.Component {
             handleLoginInput,
             handleLoginSubmit,
             handleUpdateInput,
-            handleUpdateSubmit,
             handleLogout
 
           }}
