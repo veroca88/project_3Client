@@ -9,8 +9,8 @@ export default function NavbarPage() {
         const { isLoggedIn } = context.state;
         console.log(`current user ================`, context.state.currentUser)
         return (
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-      {/* <img className="logo-brand" src="logo-brand.png" alt="logo brand"></img> */}
+    <Navbar id="navbar" collapseOnSelect expand="lg" bg="light" variant="light">
+      <img className="logo-brand" src="green.png" alt="logo brand"></img>
       <Navbar.Brand className="brand" href="/">
         Ecommerce
       </Navbar.Brand>
@@ -28,14 +28,14 @@ export default function NavbarPage() {
               <a href="#"> Save the Planet </a>
             </div> */}
           </div>
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <Nav.Link>BestSellers</Nav.Link>
             <div className="dropdown-content">
               <a href="#"> January </a>
               <a href="#"> February </a>
               <a href="#"> March </a>
             </div>
-          </div>
+          </div> */}
         </Nav>
         <Nav>
         {isLoggedIn ? (
@@ -49,10 +49,6 @@ export default function NavbarPage() {
             <Nav.Link>Sign In</Nav.Link>
             <div className="dropdown-content">
               <Nav.Link href="/login">Login</Nav.Link>
-              {/* <button><a className="btn-signin" href="/login">
-                Login
-              </a>
-              </button> */}
               <a href="/login"> My account </a>
               <a className="small-notification" href="/signup">
                 Not a member yet? Join here
