@@ -28,7 +28,12 @@ const AUTH_SERVICE = {
 
   getUser() {
     return service.get('/api/isLoggedIn');
+  },
+
+  updateProfile(userData) {
+    return service.post('/api/profile/upload', userData);
   }
+
 };
 
 export default AUTH_SERVICE;

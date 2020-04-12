@@ -25,28 +25,25 @@ class AuthProvider extends React.Component {
   componentDidMount() {
     AUTH_SERVICE.getUser()
       .then(responseFromServer => {
-        // console.log('res: ', responseFromServer);
-
+        
         const { user } = responseFromServer.data;
+        // here i see the user
+        console.log('Authentication.js, LINE31 Response from db: ', responseFromServer.data);
 
         this.setState(prevState => ({
           ...prevState,
           currentUser: user,
           isLoggedIn: true
         }));
+        console.log('Authentication.js, LINE38 User is loggedIN?: ', this.state.isLoggedIn);
       })
       .catch(err =>
         console.log('Error while getting the user: ', err)
       );
   }
-//SIGNUP
+////////////////////////////// SIGNUP
   handleSignupInput = e => {
-    const {
-      target: { name, value }
-    } = e;
-
-    console.log(`current user>>>>>>>>>>>>>>>`, this.currentUser)
-    // console.log(name, value);
+    const { target: { name, value }} = e;
     this.setState(prevState => ({
       ...prevState,
       formSignup: {
@@ -55,8 +52,41 @@ class AuthProvider extends React.Component {
       }
     }));
   };
+////////////////////////////// SIGNUP
 
-  // //LOGIN
+handleSignupSubmit = e => {
+  e.preventDefault(); 
+  AUTH_SERVICE.signup(this.state.formSignup)
+    .then(responseFromServer => {
+      const {
+        data: { user, message }
+      } = responseFromServer;
+
+      this.setState(prevState => ({
+        ...prevState,
+        formSignup: {
+          username: '',
+          email: '',
+          designer: ''
+        },          
+        currentUser: user,
+        isLoggedIn: true
+      }));
+      console.log(`${message}`);
+      this.props.history.push('/');
+    })
+    .catch(err => {
+      // console.log(err.response);
+      if (err.response && err.response.data) {
+        this.setState(prevState => ({
+          ...prevState,
+          message: err.response.data.message
+        }));
+      }
+    });
+};
+
+//========================== LOGIN
   handleLoginInput = e => {
     const {
       target: { name, value }
@@ -70,99 +100,9 @@ class AuthProvider extends React.Component {
     }));
   };
 
-  //UPDATE PROFILE
-  handleUpdateInput = e => {
-    const {target: {name, value }} = e;
-    this.setState(prevState => ({
-      ...prevState,
-      currentUser: {
-        [name] : value
-      }
-    }))
-  }
-
-  // //SUBMIT UPDATE PROFILE
-  // handleUpdateSubmit = e => {
-  //   e.preventDefault();
-  //   // console.log(this.state.formSignup);
-
-  //   // AUTH_SERVICE.signup({ username, email, password })
-  //   // the same as above        ^^^^^^
-  //   AUTH_SERVICE.update(this.state.currentUser)
-  //     .then(responseFromServer => {
-  //       console.log('res from server::::::::::::::::::::::: ', responseFromServer);
-
-  //       this.setState(prevState => ({
-  //         ...prevState,
-  //         currentUser: {
-  //           username: '',
-  //           email: '',
-  //           profilePic: ''
-  //         },
-  //         isLoggedIn: true
-  //       }));
-  //       console.log(`this is current user update >>>>>>>>>>>>>`, this.state.currentUser)
-  //       this.props.history.push('/home');
-  //     })
-  //     .catch(err => {
-  //       // console.log(err.response);
-  //       if (err.response && err.response.data) {
-  //         this.setState(prevState => ({
-  //           ...prevState,
-  //           message: err.response.data.message
-  //         }));
-  //       }
-  //     });
-  // };
-
-
-
-  //SIGNUP
-
-  handleSignupSubmit = e => {
-    e.preventDefault();
-    // console.log(this.state.formSignup);
-
-    // AUTH_SERVICE.signup({ username, email, password })
-    // the same as above        ^^^^^^
-    AUTH_SERVICE.signup(this.state.formSignup)
-      .then(responseFromServer => {
-        // console.log('res from server: ', responseFromServer);
-        const {
-          data: { user, message }
-        } = responseFromServer;
-
-        this.setState(prevState => ({
-          ...prevState,
-          formSignup: {
-            username: '',
-            email: '',
-            password: ''
-          },
-          currentUser: user,
-          isLoggedIn: true
-        }));
-        alert(`${message}`);
-        this.props.history.push('/home');
-      })
-      .catch(err => {
-        // console.log(err.response);
-        if (err.response && err.response.data) {
-          this.setState(prevState => ({
-            ...prevState,
-            message: err.response.data.message
-          }));
-        }
-      });
-  };
-
-  //LOGIN
+//========================== LOGIN  
   handleLoginSubmit = e => {
     e.preventDefault();
-    console.log(`handleLoginSubmiiiiiiit`, this.state.formLogin);
-
-    // AUTH_SERVICE.signup({ username, email, password })
-    // the same as above        ^^^^^^
     AUTH_SERVICE.login(this.state.formLogin)
     .then(responseFromServer => {
     if (this.state.formLogin.username === this.state.formSignup.username) {
@@ -182,8 +122,8 @@ class AuthProvider extends React.Component {
           currentUser: user,
           isLoggedIn: true
         }));
-        alert(`${message}`);
-        this.props.history.push('/home');
+        console.log(`${message}`);
+        this.props.history.push('/');
       })
       .catch(err => {
         // console.log(err.response);
@@ -196,6 +136,13 @@ class AuthProvider extends React.Component {
       });
   };
 
+
+//+++++++++++++++++++++++ UPDATE PROFILE
+  handleUpdateData = data => {
+  this.setState((data));
+  }
+
+//------------------------ LOGOUT
   handleLogout = () => {
     AUTH_SERVICE.logout()
       .then(() => {
@@ -210,7 +157,7 @@ class AuthProvider extends React.Component {
   };
 
   render() {
-    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateInput } = this;
+    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateData } = this;
     return (
       <>
         <AuthContext.Provider
@@ -220,7 +167,7 @@ class AuthProvider extends React.Component {
             handleSignupSubmit,
             handleLoginInput,
             handleLoginSubmit,
-            handleUpdateInput,
+            handleUpdateData,
             handleLogout
 
           }}
