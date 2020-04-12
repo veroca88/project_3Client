@@ -80,7 +80,7 @@ function Signup() {
                               <div className="error-message">{message}</div>
                             )}
                             <button
-                              className="btn btn-lg btn-warning btn-block text-uppercase"
+                              className="btn btn-lg btn-dark btn-block text-uppercase"
                               type="submit"
                             >
                               Signup
