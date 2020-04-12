@@ -1,31 +1,7 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -36,34 +12,21 @@
     transform: rotate(360deg);
   }
 }
-/* Common tags */
-
-/* * {
-  margin: 0;
-  padding: 0;
+.App {
+  text-align: center;
 }
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 10px;
-  line-height: 3.5em;
-  font-weight: 300;
-} */
 
 h1, h2, h3, h4, h5 {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-
-/* Background Colors */
-
-.background-dark {
-  background-color: rgb(25, 33, 41);
-  color: white;
+header {
+  font-size: 16px;
 }
-
-
 /* Styling Navbar hover */
-
+#navbar {
+  font-size: 1.3rem;
+}
 
 .dropdown {
   position: relative;
@@ -96,7 +59,7 @@ h1, h2, h3, h4, h5 {
 /* Logo Image */
 
 .logo-brand {
-  width: 130px;
+  width: 70px;
   position: relative;
 }
  /* Logo Brand */
@@ -135,6 +98,13 @@ h1, h2, h3, h4, h5 {
   border-radius: 0px;
   text-decoration: none;
 }
+/* CheckBox in Update form */
+
+#isDesigner {
+  border-radius: 50px;
+  margin: 7% 0%;
+}
+
 
 /* Link to singup */
 
@@ -176,7 +146,7 @@ h1, h2, h3, h4, h5 {
 	display: inline-block;
 	text-align: left;
 	position: relative;
-	width:12%;
+	width:100%;
 	max-height: 350px;
 	margin: 0 15px 20px 15px;
 	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.18),
@@ -193,7 +163,7 @@ h1, h2, h3, h4, h5 {
 	}
 .cardview .content{
 	position: relative;
-  padding: 15px 20px;
+  padding: 3px 20px;
   text-align: center;
 }
 .cardview h1{
@@ -203,7 +173,7 @@ h1, h2, h3, h4, h5 {
 }
 .cardview p{
 	font-size: 14px;
-	margin: 0 15px 15px 0;
+	margin: 0;
 }
 .cardview a{
 	font-size: 14px;
@@ -221,22 +191,48 @@ h1, h2, h3, h4, h5 {
 	background: rgba(0,0,0,0.04);
 	border-radius: 6px;
 }
-@media screen and (max-width: 830px){
+@media screen and (max-width: 2552px){
 	.cardview{
-		width: 44%;
+		width: 10%;
 	}
 }
-@media screen and (max-width: 590px){
+@media screen and (max-width: 1920px){
 	.cardview{
-		width: 80%;
+		width: 20%;
+	}
+}
+@media screen and (max-width: 1200px){
+	.cardview{
+		width: 25%;
+	}
+}
+@media screen and (max-width: 992px){
+	.cardview{
+		width: 25%;
+	}
+}
+@media screen and (max-width: 840px){
+	.cardview{
+		width: 40%;
   }
 }
-	@media screen and (max-width: 530px){
+	@media screen and (max-width: 600px){
 	.cardview{
-		width: 85%;
+		width: 100%;
 		margin: 15px auto;
 	}
+} 
+
+@import url('https://use.fontawesome.com/releases/v5.0.9/css/all.css');
+
+/* ADD PRODUCT */
+
+.heart-click {
+  width: 20%;
+  position: relative;
+  left:45%;
 }
+
 
 /* HOME PAGE */
 
