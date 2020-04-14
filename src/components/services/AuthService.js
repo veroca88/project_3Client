@@ -31,7 +31,8 @@ const AUTH_SERVICE = {
   },
 
   updateProfile(userData) {
-    return service.post('/api/profile/upload', userData);
+    console.log({userData})
+    return service.post(`/api/profile/upload`, userData);
   }
 
 };

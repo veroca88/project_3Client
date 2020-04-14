@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 
 import AUTH_SERVICE from '../services/AuthService';
 
+import axios from 'axios';
+
 export const AuthContext = React.createContext();
 
 class AuthProvider extends React.Component {
@@ -137,11 +139,45 @@ handleSignupSubmit = e => {
   };
 
 
-//+++++++++++++++++++++++ UPDATE PROFILE
-  handleUpdateData = data => {
-  this.setState((data));
-  }
+//+++++++++++++++++++++++ UPDATE INPUT PROFILE
+handleUpdateInput = e => {
+  const { target: { name, value }} = e;
+  this.setState(prevState => ({
+    ...prevState,
+    currentUser:{
+      [name]: value
+    }
+  }));
+};
 
+//+++++++++++++++++++++++ UPDATE INPUT PROFILE
+
+  handleUpdateData = e => {
+    e.preventDefault();
+    AUTH_SERVICE.updateProfile(this.state.currentUser)
+    .then(responseFromServer => {
+            const {
+          data: { user, message }
+        } = responseFromServer;
+
+        this.setState(prevState => ({
+          ...prevState,
+          currentUser: user,
+          isLoggedIn: true
+        }));
+        console.log(`${message}`);
+        this.props.history.push('/');
+      })
+      .catch(err => {
+        // console.log(err.response);
+        if (err.response && err.response.data) {
+          this.setState(prevState => ({
+            ...prevState,
+            message: err.response.data.message
+          }));
+        }
+      });
+  };
 //------------------------ LOGOUT
   handleLogout = () => {
     AUTH_SERVICE.logout()
@@ -157,7 +193,7 @@ handleSignupSubmit = e => {
   };
 
   render() {
-    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateData } = this;
+    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateInput, handleUpdateData } = this;
     return (
       <>
         <AuthContext.Provider
@@ -168,6 +204,7 @@ handleSignupSubmit = e => {
             handleLoginInput,
             handleLoginSubmit,
             handleUpdateData,
+            handleUpdateInput,
             handleLogout
 
           }}
