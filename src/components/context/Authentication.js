@@ -4,8 +4,6 @@ import { withRouter } from 'react-router-dom';
 
 import AUTH_SERVICE from '../services/AuthService';
 
-import axios from 'axios';
-
 export const AuthContext = React.createContext();
 
 class AuthProvider extends React.Component {
@@ -192,8 +190,19 @@ handleUpdateInput = e => {
       .catch(err => console.log('Error while logout: ', err));
   };
 
+
+  // this wil handle changing of true and false value for a checkbox since you have to check the event.target.checked option for true or false. If we just check the event.target.value we will get a value of "on" or "off".
+  handleCheckboxChange = (event) => {
+    const { target: {name, checked } }= event;
+
+    this.setState({ 
+      currentUser: {
+        [name]: checked 
+      }});
+  };
+
   render() {
-    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateInput, handleUpdateData } = this;
+    const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateInput, handleUpdateData, handleCheckboxChange } = this;
     return (
       <>
         <AuthContext.Provider
@@ -205,7 +214,8 @@ handleUpdateInput = e => {
             handleLoginSubmit,
             handleUpdateData,
             handleUpdateInput,
-            handleLogout
+            handleLogout,
+            handleCheckboxChange
 
           }}
         >

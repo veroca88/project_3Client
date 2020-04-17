@@ -1,7 +1,4 @@
 import React from "react";
-
-import { Redirect } from "react-router-dom";
-
 import { AuthContext } from "../context/Authentication";
 
 function Login() {
@@ -10,11 +7,10 @@ function Login() {
       {context => {
         const {
           currentUser: {username, email, designer},
-          message,
-          isLoggedIn
+          message
         } = context.state;
 
-        const { handleUpdateData } = context;
+        const { handleUpdateData, handleUpdateInput, handleCheckboxChange } = context;
         return (
           <>
                 <div className="container">
@@ -28,7 +24,7 @@ function Login() {
                     <form
                       className="form-signin"
                       id="form"
-                    //   onSubmit={handleUpdateData}
+                      onSubmit={handleUpdateData}
                     >
                       <p>Edit your profile</p>
                       <label className="form-label-group" htmlFor="username">
@@ -39,7 +35,7 @@ function Login() {
                           name="username"
                           type="text"
                           value={username}
-                          onChange={handleUpdateData}
+                          onChange={handleUpdateInput}
                         />
                       </label>
                       <label className="form-label-group" htmlFor="email">
@@ -50,7 +46,7 @@ function Login() {
                           name="email"
                           type="email"
                           value={email}
-                          onChange={handleUpdateData}
+                          onChange={handleUpdateInput}
                         />
                       </label>
                       <div>
@@ -61,10 +57,7 @@ function Login() {
                           id="isDesigner"
                           type="checkbox"
                           name="isDesigner"
-                            // onChange={(event) =>
-                            //   this.handleCheckboxChange(event)
-                            // }
-                            onChange={handleUpdateData}
+                            onChange={handleCheckboxChange}
                           value={designer}
                         />
                       </label>

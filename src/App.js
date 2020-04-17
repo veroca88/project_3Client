@@ -3,11 +3,12 @@ import { Switch, Route } from "react-router-dom";
 
 //Components
 import Navbar from "./components/Navbar";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home";
 import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
 import Profile from "./components/User/Profile";
-import DisplayProducts from "./components/Products/DisplayProducts";
+// import ListProducts from "./pages/Products";
+import DisplayProducts from "./pages/DisplayProducts";
 
 //Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,7 +32,7 @@ class App extends React.Component {
         this.setState({
           postProducts: productsFromAPI.data,
         });
-        console.log('getting all my products ==================================', productsFromAPI.data[0] )
+        // console.log('App.js LINE 35. Getting all my products ', productsFromAPI.data)
       })
       .catch((err) => console.log({ err }));
   };
@@ -58,6 +59,7 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Home} />
           <Route exact path="/profile" component={Profile} />
+          {/* <Route exact path="/products" component={ListProducts}/> */}
           {/* <Route exact path='/details' render={(props) => (<DisplayProducts {...props} getProducts={this.getProducts} />
                       )} />*/}
         </Switch>

@@ -7,7 +7,7 @@ export default function NavbarPage() {
     <AuthContext.Consumer>
       {context => {
         const { isLoggedIn } = context.state;
-        console.log(`current user ================`, context.state.currentUser)
+        console.log(`Navbar.js LINE10 current user ================`, context.state.currentUser)
         return (
     <Navbar id="navbar" collapseOnSelect expand="lg" bg="light" variant="light">
       <img className="logo-brand" src="green.png" alt="logo brand"></img>
