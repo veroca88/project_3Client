@@ -24,6 +24,18 @@ header {
   font-size: 16px;
 }
 /* Styling Navbar hover */
+
+.link-navbar:hover {
+  text-decoration: none;
+  color: #424242;
+}
+
+.link-navbar {
+  text-decoration: none;
+  color: black;
+  margin: 10px;
+}
+
 #navbar {
   font-size: 1.3rem;
 }
@@ -52,7 +64,10 @@ header {
   display: block;
 }
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+  text-decoration: none;
+}
 
 /* Components inside Sign In in NavBar */
 
@@ -169,7 +184,7 @@ header {
 	}
 .cardview .content{
 	position: relative;
-  padding: 3px 20px;
+  padding: 25px 20px;
   text-align: center;
 }
 .cardview h1{
