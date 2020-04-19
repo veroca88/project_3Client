@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Table } from "react-bootstrap";
+import { Link } from "react-router-dom"
 import { AuthContext } from "./context/Authentication";
 
 export default function NavbarPage() {
@@ -11,54 +12,54 @@ export default function NavbarPage() {
         return (
     <Navbar id="navbar" collapseOnSelect expand="lg" bg="light" variant="light">
       <img className="logo-brand" src="green.png" alt="logo brand"></img>
-      <Navbar.Brand className="brand" href="/">
-        Ecommerce
+      <Navbar.Brand>
+        <Link className="link-navbar" to="/">Ecommerce</Link>        
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link>Daily Inspiration</Nav.Link>
-          <div className="dropdown">
-            <Nav.Link href="/products">Products</Nav.Link>
+          <Link className="link-navbar">Daily Inspiration</Link>
+            <Link className="link-navbar" to="/products">Products</Link>
+          {/* <div className="dropdown"> */}
             {/* <div className="dropdown-content">
-              <a href="#"> New Arrivals </a>
-              <a href="#"> Offers </a>
-              <a href="#"> Trending Now </a>
-              <a href="#"> Shop by Category </a>
-              <a href="#"> Save the Planet </a>
+              <a to="#"> New Arrivals </a>
+              <a to="#"> Offers </a>
+              <a to="#"> Trending Now </a>
+              <a to="#"> Shop by Category </a>
+              <a to="#"> Save the Planet </a>
             </div> */}
-          </div>
+          {/* </div> */}
           {/* <div className="dropdown">
-            <Nav.Link>BestSellers</Nav.Link>
+            <Link>BestSellers</Link>
             <div className="dropdown-content">
-              <a href="#"> January </a>
-              <a href="#"> February </a>
-              <a href="#"> March </a>
+              <a to="#"> January </a>
+              <a to="#"> February </a>
+              <a to="#"> March </a>
             </div>
           </div> */}
         </Nav>
         <Nav>
         {isLoggedIn ? (
             <>
-          <Nav.Link onClick={context.handleLogout}>Logout</Nav.Link>
-          <Nav.Link href="/profile">My account </Nav.Link>
+          <Link className="link-navbar" onClick={context.handleLogout}>Logout</Link>
+          <Link className="link-navbar" to="/profile">My account </Link>
             </>
           ) : (
             <>   
           <div className="dropdown">
-            <Nav.Link>Sign In</Nav.Link>
+            <Link className="link-navbar">Sign In</Link>
             <div className="dropdown-content">
-              <Nav.Link href="/login">Login</Nav.Link>
-              <a href="/login"> My account </a>
-              <a className="small-notification" href="/signup">
+              <Link className="link-navbar" to="/login">Login</Link>
+              <Link className="link-navbar" to="/login"> My account </Link>
+              <Link className="small-notification link-navbar" to="/signup">
                 Not a member yet? Join here
-              </a>
+              </Link>
             </div>
           </div>
           </>            
           )}
           <div className="dropdown">
-            <Nav.Link>Shopping Bag (0)</Nav.Link>
+            <Link className="link-navbar">Shopping Bag (0)</Link>
             <div className="dropdown-content">
               <Table className="list-items" size="sm">
                 <tbody>
