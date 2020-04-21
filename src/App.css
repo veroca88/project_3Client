@@ -327,3 +327,55 @@ h1{
     display: block;
     width: 32px;
 }
+
+/* Decription Product */
+
+.card {
+  padding: 15px 10px;
+  width: 90%;
+}
+.card-text {
+  display: flex;
+  font-size: 1rem;
+  margin-left: 30px;
+}
+.info-box {
+  padding-top: 20%;
+}
+.size-box {
+  margin: 0% 0% 5% 8%;
+}
+
+.size-box select {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  background-color: transparent;
+  border-color: gray;
+  color: gray; 
+}
+
+/* .size-box select:hover {
+  color: black;
+} */
+
+.material-box {
+  margin-left: 6%;
+}
+.cost-box {
+  margin-left: 14%;
+}
+.color-square {
+  display: table-cell;
+  width: auto;
+  padding: 5%;
+  border: 2px solid black;
+}
+.color-card {
+  border: black;
+  display: inline;
+}
+
+
+
+

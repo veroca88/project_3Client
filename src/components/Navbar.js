@@ -18,7 +18,7 @@ export default function NavbarPage() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link className="link-navbar">Daily Inspiration</Link>
+          <Link to="/dailyInspiration" className="link-navbar">Daily Inspiration</Link>
             <Link className="link-navbar" to="/products">Products</Link>
           {/* <div className="dropdown"> */}
             {/* <div className="dropdown-content">
@@ -59,7 +59,7 @@ export default function NavbarPage() {
           </>            
           )}
           <div className="dropdown">
-            <Link className="link-navbar">Shopping Bag (0)</Link>
+            <Link to="/shoppingBag"className="link-navbar">Shopping Bag (0)</Link>
             <div className="dropdown-content">
               <Table className="list-items" size="sm">
                 <tbody>
