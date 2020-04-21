@@ -1,11 +1,10 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import OneProduct from "../OneProduct/OneProduct";
 
 class ProductList extends React.Component {
   render() {
-    const { material, name, cost, image, _id } = this.props;
+    const { name, cost, image, _id } = this.props;
     return (
         <div className="cardview">
         <div  className="content">
@@ -13,8 +12,8 @@ class ProductList extends React.Component {
           <Link to={`/details/${_id}`}>
             <img src={image} alt={name}/>
           </Link>
-            <p >Material: {material}</p>
-            <p >cost: ${cost}</p>
+            <p >{name}</p>
+            <p >${cost}</p>
           <div>
               <i className="far fa-heart heart-click"></i>
           </div>                                                                    

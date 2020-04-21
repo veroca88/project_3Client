@@ -21,7 +21,7 @@ export default class Products extends Component {
             postProducts: productsFromAPI.data,
             search: productsFromAPI.data
           });
-          // console.log('Product.js LINE 26. Getting all my products ', this.state.postProducts)
+          console.log('Product.js LINE 26. Getting all my products ', this.state.postProducts)
             // console.log('Product.js LINE 27. Getting my state search products ', this.state.search)
         })
         .catch((err) => console.log({ err }));
@@ -32,7 +32,8 @@ export default class Products extends Component {
         const { postProducts } = this.state
         
         const searchItems = postProducts.filter(item => {
-                return item.name.toUpperCase().includes(value.toUpperCase())
+          console.log('Here is the iteeeeeeeeeeeeeem', item)
+                return item.description.toUpperCase().includes(value.toUpperCase())
           // for (let ea in item) {
           //   if (item[ea] === value) {
           //     return item[ea].toLowerCase().includes(value.toLowerCase())
