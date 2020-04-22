@@ -9,6 +9,7 @@ import Login from "./components/Authentication/Login";
 import Profile from "./components/User/Profile";
 import Products from "./pages/Products";
 import OneProduct from "./components/OneProduct/OneProduct";
+import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
 
 //Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -29,7 +30,8 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/products" component={Products}/>
-          <Route exact path="/details/:productId" component={OneProduct}/>
+          <Route exact path="/products/:productId" component={OneProduct}/>
+          <Route exact path="/shoppingBag" component={ShoppingBag}/>
           
           {/* <Route exact path="/details" render={(props) => (<OneProduct {...props}/>)} /> */}
           {/* <Route exact path='/details' render={(props) => (<DisplayProducts {...props} getProducts={this.getProducts} />

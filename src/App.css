@@ -340,7 +340,7 @@ h1{
   margin-left: 30px;
 }
 .info-box {
-  padding-top: 20%;
+  padding: 10% 5% 0% 0%;
 }
 .size-box {
   margin: 0% 0% 5% 8%;
@@ -355,25 +355,25 @@ h1{
   color: gray; 
 }
 
-/* .size-box select:hover {
-  color: black;
-} */
+.cost-box {
+  margin-left: 14%;
+}
 
 .material-box {
   margin-left: 6%;
 }
-.cost-box {
-  margin-left: 14%;
+
+.add-item {
+  margin: 40px;
+  font-size: small;
+  width: 80%;
 }
-.color-square {
-  display: table-cell;
-  width: auto;
-  padding: 5%;
-  border: 2px solid black;
-}
-.color-card {
-  border: black;
-  display: inline;
+
+.heart-click-item {
+  width: 20%;
+  position: relative;
+  text-outline: 20%;
+  left:45%;
 }
 
 

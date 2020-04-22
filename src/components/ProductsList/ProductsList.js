@@ -9,7 +9,7 @@ class ProductList extends React.Component {
         <div className="cardview">
         <div  className="content">
         {/* <Route exact path="/details" render={(props) => (<OneProduct {...props}/>)} /> */}
-          <Link to={`/details/${_id}`}>
+          <Link to={`/products/${_id}`}>
             <img src={image} alt={name}/>
           </Link>
             <p >{name}</p>
