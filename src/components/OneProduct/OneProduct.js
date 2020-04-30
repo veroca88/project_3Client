@@ -1,151 +1,164 @@
 import React, { Component } from "react";
+
+import { Link } from "react-router-dom";
+
 import axios from "axios";
+
+// state = {
+//   currentProduct: this.props.location.state.productDetail, // this is our reference
+//   orderItem: this.props.location.state.orderItem, // this is going to change
+//   isInShopBag: this.props.location.state.productDetail.inShopBag, //true or false
+//   user: this.props.location.state.currentUser
+// };
 
 class OneProduct extends Component {
   state = {
-    product: undefined,
-    id: this.props.match.params.productId,
-    orderItem: [],
-    // id: this.props.location.state.data._id
+    currentProduct: "",
+    orderItem: "",
+    isInShopBag: "",
+    user: "",
   };
 
   componentDidMount() {
-    this.getOneProduct();
-  }
+    // const { productDetail } =  this.props.location.state
+    console.log("ComponentDidMount..", this.props.location);
 
-  getOneProduct = () => {
-    // console.log("Get product ONneProduct.js LINE15 ..........", {
-    //   id: this.props.match.params,
-    // });
-    // const id = this.props.match.params.productId
-    axios
-      .get(`http://localhost:3001/products/${this.state.id}`)
-      .then((productDetails) => {
-        this.setState({
-          product: productDetails.data,
-          orderItem: productDetails.data,
-        });
-        // console.log("LINE33 This is our oneProduct data", this.state.product);
-        // console.log("LINE34 This is our order...........", this.state.orderItem);
-        // console.log('Product.js LINE 26. Getting all my products ', this.state.postProducts)
-        // console.log('Product.js LINE 27. Getting my state search products ', this.state.search)
-      })
-      .catch((err) => console.log({ err }));
-  };
-
-// DONT DELETE IT COULD HELP WITH THE SIZE SELECTED
-
-  // handleClearArray = () => {
-  //   this.setState((prevState) => ({
-  //     ...prevState,
-  //     orderItem: { size: [], color: [] },
-  //   }));
-  //   console.log("ClearArray", this.state.orderItem);
-  // };
-
-  handleSizeItem = (e) => {
-    const { value } = e.target;
-    const { product, orderItem } = this.state;
-    console.log("LINE44 This is our order BEFORE...........", orderItem.size);
-    const name = e.target.name;
-    const sizeSelected = product.size[value - 1];
-    console.log("SIZE", sizeSelected);
-    // return sizeSelected
-    this.setState((prevState) => ({
-      ...prevState,
-      orderItem: {
-        size: [sizeSelected],
-      },
-    }));
-    console.log("LINE54 This is our order AFTER...........", orderItem);
-  };
-
-  handleColorItem = (e) => {
-    const { value } = e.target;
-    const { product } = this.state;
-    const colorSelected = product.color[value - 1];
-    console.log("COLOR", colorSelected);
-    // return
-  };
-
-  handleSubmit(event) {
-    alert("Your favorite flavor is: " + this.state.orderItem.value);
-    event.preventDefault();
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-    console.log(name);
+    const productDetail = this.props.location?.state?.productDetail
+      ? this.props.location.state.productDetail
+      : this.state.currentProduct;
+    const currentUser = this.props.location?.state?.currentUser
+      ? this.props.location.state.currentUser
+      : this.state.user;
 
     this.setState({
-      [name]: value,
+      currentProduct: productDetail, // this is our reference
+      orderItem: productDetail, // this is going to change
+      isInShopBag: productDetail.inShopBag, //true or false
+      user: currentUser,
     });
   }
 
-  render() {
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    const { product } = this.state;
+  // handle each option in product description
 
+  handleItem = (e) => {
+    // e.preventDefault()
+    const { value, name } = e.target;
+    console.log("this is value", value);
+    console.log("this is name", name);
+    // const { product } = this.state;
+    // console.log("COLOR", value);
+    this.setState((prevState) => ({
+      // ...prevState,
+      orderItem: {
+        ...prevState.orderItem,
+        [name]: value,
+        inShopBag: true,
+      },
+    }));
+    console.log("this is our order", this.state.orderItem);
+  };
+
+  handleClick = () => {
+    this.setState((state) => ({
+      isInShopBag: !state.isInShopBag,
+    }));
+  };
+
+  addToCart = (order) => {
+    const { user } = this.state
+    const theShoppingBag = user.userShoppingCart.items;
+
+    theShoppingBag.map((eachItem) =>
+      eachItem._id === order._id ? "Item already added!!" : theShoppingBag.push(order)
+    );
+  };
+
+  render() {
+    const {
+      name,
+      image,
+      cost,
+      material,
+      size,
+      color,
+      id,
+    } = this.state.currentProduct;
+
+    const { user, orderItem } = this.state;
+    console.log(this.props.location.state);
+
+    console.log("this is current Product ++++++++", this.state.currentProduct);
+
+    console.log("this is orderItem", this.state.orderItem);
+
+    console.log("this is shopping bag", this.state.shoppingBag);
+
+    console.log("this is user............", this.state.user);
     return (
       <section>
-        {product ? (
-          //onSubmit={this.handleSubmit}
-          <form className="container">
-            <div className="card">
-              <div className="row ">
-                <div className="col-md-8">
-                  <img src={product.image} className="w-100" />
+        <form onSubmit={this.handleSubmit} className="container">
+          <div className="card">
+            <div className="row ">
+              <div className="col-md-8">
+                <img src={image} className="w-100" />
+              </div>
+              <div className="col-md-4 info-box">
+                <h4 className="card-title">{name}</h4>
+                <hr />
+                <p className="card-text">
+                  Price: <strong className="cost-box">${cost}</strong>
+                </p>
+                <p className="card-text">
+                  Material :<strong className="material-box">{material}</strong>
+                </p>
+                <div className="size-box">
+                  <select name="size" onChange={this.handleItem}>
+                    <option>Select size</option>
+                    {size &&
+                      size.map((eachSize, index) => {
+                        return (
+                          <option key={index} value={eachSize}>
+                            {eachSize}
+                          </option>
+                        );
+                      })}
+                  </select>
                 </div>
-                <div className="col-md-4 info-box">
-                  <h4 className="card-title">{product.name}</h4>
-                  <hr />
-                  <p className="card-text">
-                    Price: <strong className="cost-box">${product.cost}</strong>
-                  </p>
-                  <p className="card-text">
-                    Material :
-                    <strong className="material-box">{product.material}</strong>
-                  </p>
-                  <div className="size-box">
-                    <select
-                      // value={this.state.orderItem.size}
-                      onChange={this.handleSizeItem}
-                    >
-                      <option value="0">Select size</option>
-                      {product.size.map((eachSize, index) => {
-                        return <option value={index + 1}>{eachSize}</option>;
-                      })}
-                    </select>
-                  </div>
 
-                  <div className="size-box">
-                    <select                  
-                      onChange={this.handleColorItem}
-                      value={this.state.color}
-                    >
-                      <option value="0">Select color</option>
-                      {product.color.map((eachColor, index) => {
-                        return <option value={index + 1}>{eachColor}</option>;
+                <div className="size-box">
+                  <select name="color" onChange={this.handleItem}>
+                    <option>Select color</option>
+                    {color &&
+                      color.map((eachColor, index) => {
+                        return (
+                          <option key={index} value={eachColor}>
+                            {eachColor}
+                          </option>
+                        );
                       })}
-                    </select>
-                  </div>
+                  </select>
+                </div>
 
+                <Link
+                  to={{
+                    pathname: `/shopping-bag/${user._id}`,
+                    state: {
+                      item: orderItem,
+                    },
+                  }}
+                >
                   <button className="add-item btn btn-lg btn-dark btn-block text-uppercase">
                     Add to Shopping Bag
                   </button>
-                  <div>
-                    <i className="far fa-heart heart-click-item"></i>
-                  </div>
+                </Link>
+
+                <div>
+                  <i className="far fa-heart heart-click-item"></i>
                 </div>
               </div>
             </div>
-          </form>
-        ) : (
-          <h1>Loading... </h1>
-        )}
+          </div>
+        </form>
       </section>
     );
   }

@@ -1,103 +1,75 @@
-import React from "react";
+import React, { Component } from "react";
+import Table from "react-bootstrap/Table";
 
-import { Redirect } from "react-router-dom";
+export default class ShoppingBag extends Component {
+  state = {
+    quantity: 0,
+    orderItem: "",
+  };
 
-import { AuthContext } from "../context/Authentication";
-
-function ShoppingBag() {
-  return (
-    <AuthContext.Consumer>
-      {context => {
-        const {
-          formSignup: { username, email, password },
-          message,
-          isLoggedIn
-        } = context.state;
-
-        const { handleSignupInput, handleSignupSubmit } = context;
-        return (
-          <>
-            {isLoggedIn ? (
-              <Redirect to="/" />
-            ) : (
-              <>
-                <div className="container">
-                  <div className="row">
-                    <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                      <div className="card card-signin my-5">
-                        <div className="card-body">
-                          <h5 className="card-title text-center">BECOME A MEMBER</h5>
-                          <form
-                            className="form-signin"
-                            id="form"
-                            onSubmit={handleSignupSubmit}
-                          >
-                            <p>
-                              Become a Member — you'll enjoy exclusive deals,
-                              offers, invites and rewards.
-                            </p>
-                            <label
-                              className="form-label-group"
-                              htmlFor="username"
-                            >
-                              Username:
-                              <input
-                                className="form-control"
-                                id="username"
-                                name="username"
-                                type="text"
-                                value={username}
-                                onChange={handleSignupInput}
-                              />
-                            </label>
-                            <label className="form-label-group" htmlFor="email">
-                              Email:
-                              <input
-                                className="form-control"
-                                id="email"
-                                name="email"
-                                type="email"
-                                value={email}
-                                onChange={handleSignupInput}
-                              />
-                            </label>
-                            <label
-                              className="form-label-group"
-                              htmlFor="password"
-                            >
-                              Password:
-                              <input
-                                className="form-control"
-                                id="password"
-                                name="password"
-                                type="password"
-                                value={password}
-                                onChange={handleSignupInput}
-                              />
-                            </label>
-                            <hr className="my-4" />
-                            {message && (
-                              <div className="error-message">{message}</div>
-                            )}
-                            <button
-                              className="btn btn-lg btn-dark btn-block text-uppercase"
-                              type="submit"
-                            >
-                              Signup
-                            </button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  componentDidMount() {
+    const order = this.props.location?.state?.item
+      ? this.props.location?.state?.item
+      : this.state.orderItem;
+    this.setState({
+      orderItem: order,
+    });
+  }
+  render() {
+    const {
+      name,
+      image,
+      cost,
+      material,
+      size,
+      color,
+      id,
+    } = this.state.orderItem;
+    return (
+      <div className="shop-bag">
+        <Table className="center" responsive>
+          <thead >
+            <tr>
+              <th>Product</th>
+              <th>Size</th>
+              <th>Color</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr>
+              <td>
+                <img className="shop-bag-img" src={image}></img>
+              </td>
+              <td>{size}</td>
+              <td>{color}</td>
+              <td>
+                <div className="def-number-input number-input safari_only">
+                  <button
+                    onClick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    className="minus"
+                  ></button>
+                  <input
+                    className="quantity"
+                    min="0"
+                    name="quantity"
+                    value="1"
+                    type="number"
+                  />
+                  <button
+                    onClick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    className="plus"
+                  ></button>
                 </div>
-              </>
-            )}
-          </>
-        );
-      }}
-    </AuthContext.Consumer>
-  );
+              </td>
+              <td>{cost}</td>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </Table>
+      </div>
+    );
+  }
 }
-
-export default ShoppingBag;
