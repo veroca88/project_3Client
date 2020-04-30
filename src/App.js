@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
 import Profile from "./components/User/Profile";
-import Products from "./pages/Products";
+import ProductsList from "./components/ProductsList/ProductsList";
 import OneProduct from "./components/OneProduct/OneProduct";
 import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
 
@@ -29,9 +29,9 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Home} />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/products" component={Products}/>
+          <Route exact path="/products" component={ProductsList}/>
           <Route exact path="/products/:productId" component={OneProduct}/>
-          <Route exact path="/shoppingBag" component={ShoppingBag}/>
+          <Route exact path="/shopping-bag/:userId" component={ShoppingBag}/>
           
           {/* <Route exact path="/details" render={(props) => (<OneProduct {...props}/>)} /> */}
           {/* <Route exact path='/details' render={(props) => (<DisplayProducts {...props} getProducts={this.getProducts} />
