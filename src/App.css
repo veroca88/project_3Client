@@ -168,12 +168,12 @@ header {
 	text-align: left;
 	position: relative;
 	width:100%;
-	max-height: 350px;
+	max-height: 380px;
 	margin: 0 15px 20px 15px;
 	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.18),
 		0px 4px 14px 0px rgba(0, 0, 0, 0.15);
 }
-	.cardview img{
+	.cardview .card-img{
 		display: block;
 		position: relative;
 		background-position: center center;
@@ -246,7 +246,7 @@ header {
 
 @import url('https://use.fontawesome.com/releases/v5.0.9/css/all.css');
 
-/* ADD PRODUCT */
+/* ADD PRODUCT TO WISHLIST */
 
 .heart-click {
   width: 20%;
@@ -362,19 +362,117 @@ h1{
 .material-box {
   margin-left: 6%;
 }
-
-.add-item {
-  margin: 40px;
-  font-size: small;
-  width: 80%;
+.cart-btn {
+  width: 20px;
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  transform: translate(100%, 100%);
+  transition: all 1s ease-in-out;
 }
 
-.heart-click-item {
-  width: 20%;
+/* Shopping Bag */
+
+.shop-bag {
+  margin: 5% 10%;
+}
+
+.shop-bag-img {
+  width: 50px;
+  margin-left: 20%;
+}
+
+.center {
+  vertical-align: middle;
+  align-self: center;
+}
+/* Input spinner Quantity */
+
+
+.number-input input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  }
+  
+  .number-input input[type=number]::-webkit-inner-spin-button,
+  .number-input input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  }
+  
+  .number-input {
+  margin-bottom: 3rem;
+  }
+  
+  .number-input button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
   position: relative;
-  text-outline: 20%;
-  left:45%;
-}
+  }
+  
+  .number-input button:before,
+  .number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  height: 2px;
+  transform: translate(-50%, -50%);
+  }
+  
+  .number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  }
+  
+  .number-input input[type=number] {
+  text-align: center;
+  }
+  
+  .number-input.number-input {
+  border: 1px solid #ced4da;
+  width: 10rem;
+  border-radius: .25rem;
+  display: contents;
+  }
+  
+  .number-input.number-input button {
+  width: 2.6rem;
+  height: .7rem;
+  }
+  
+  .number-input.number-input button.minus {
+  padding-left: 10px;
+  }
+  
+  .number-input.number-input button:before,
+  .number-input.number-input button:after {
+  width: .7rem;
+  background-color: #495057;
+  }
+  
+  .number-input.number-input input[type=number] {
+  max-width: 4rem;
+  padding: .5rem;
+  border: 1px solid #ced4da;
+  border-width: 0 1px;
+  font-size: 1rem;
+  height: 2rem;
+  color: #495057;
+  }
+  
+  @media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color:transparent) {
+  
+  .number-input.def-number-input.safari_only button:before,
+  .number-input.def-number-input.safari_only button:after {
+  margin-top: -.3rem;
+  }
+  }
+  }
 
 
 
