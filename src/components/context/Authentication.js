@@ -201,6 +201,7 @@ handleUpdateInput = e => {
       }});
   };
 
+
   render() {
     const { state, handleSignupInput, handleSignupSubmit, handleLogout, handleLoginInput, handleLoginSubmit, handleUpdateInput, handleUpdateData, handleCheckboxChange } = this;
     return (
@@ -216,7 +217,6 @@ handleUpdateInput = e => {
             handleUpdateInput,
             handleLogout,
             handleCheckboxChange
-
           }}
         >
           {this.props.children}
