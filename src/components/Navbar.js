@@ -7,7 +7,8 @@ export default function NavbarPage() {
   return (
     <AuthContext.Consumer>
       {(context) => {
-        const { isLoggedIn } = context.state;
+        const { isLoggedIn, currentUser } = context.state;
+        console.log('THIS IS SHOPPING BAG', currentUser)
         return (
           <Navbar
             id="navbar"
@@ -46,8 +47,14 @@ export default function NavbarPage() {
                     </Link>
 
                     <div className="dropdown">
-                      <Link to="/shopping-bag" className="link-navbar">
-                        Shopping Bag (0)
+                      <Link to={{
+                        pathname:`/shopping-bag/${currentUser._Id}`,
+                        state: {
+                          currentUser
+                        }
+                      }}
+                      className="link-navbar">
+                        Shopping Bag ({currentUser.userShoppingCart.items.length})
                       </Link>
                       <div className="dropdown-content">
                         <Table className="list-items" size="sm">
