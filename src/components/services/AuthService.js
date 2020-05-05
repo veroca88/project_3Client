@@ -12,21 +12,21 @@ const AUTH_SERVICE = {
   // userData is a placeholder (represents the user's inputs in the signup and login form)
   signup(userData) {
     // const { username, email, password } = req.body; <===> userData
-    // console.log('user data in the service: ', userData);
     return service.post('/api/signup', userData);
   },
-
+  
   login(userData) {
     // passport.authenticate('local'),
     // console.log('user data in the service: ', userData)
     return service.post('/api/login', userData);
   },
-
+  
   logout() {
     return service.post('/api/logout', {});
   },
-
+  
   getUser() {
+    console.log('getuser data in the service: ');
     return service.get('/api/isLoggedIn');
   },
 

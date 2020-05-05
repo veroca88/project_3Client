@@ -19,7 +19,7 @@ class AuthProvider extends React.Component {
     },
     currentUser: {},
     isLoggedIn: false,
-    message: null
+    message: null,
   };
 
   componentDidMount() {
@@ -36,6 +36,7 @@ class AuthProvider extends React.Component {
           isLoggedIn: true
         }));
         console.log('Authentication.js, LINE38 User is loggedIN?: ', this.state.isLoggedIn);
+        console.log('Authentication.js, LINE41 User : ', this.state.currentUser);
       })
       .catch(err =>
         console.log('Error while getting the user: ', err)
