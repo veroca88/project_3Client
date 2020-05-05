@@ -9,7 +9,7 @@ import { AuthContext } from "../context/Authentication";
 class ProductList extends React.Component {
   state = {
     postProducts: null,
-    search: []
+    search: [],
   };
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class ProductList extends React.Component {
           postProducts: productsFromAPI.data,
           search: productsFromAPI.data,
         });
-        console.log("products", this.state.postProducts);
+        console.log("PRODUCTSLIST.JS products", this.state.postProducts);
       })
       .catch((err) => console.log({ err }));
   };

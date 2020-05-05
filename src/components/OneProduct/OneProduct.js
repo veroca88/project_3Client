@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
-
+import PRODUCT_SERVICE from "../services/ProductService";
 import axios from "axios";
+import ShoppingBag from "../ShoppingBag/ShoppingBag";
 
-// state = {
-//   currentProduct: this.props.location.state.productDetail, // this is our reference
-//   orderItem: this.props.location.state.orderItem, // this is going to change
-//   isInShopBag: this.props.location.state.productDetail.inShopBag, //true or false
-//   user: this.props.location.state.currentUser
-// };
 
 class OneProduct extends Component {
   state = {
     currentProduct: "",
     orderItem: "",
     isInShopBag: "",
+    quantity: "",
+    total: "",
     user: "",
+    shoppingBag: [],
+    value: ""
   };
 
   componentDidMount() {
@@ -29,11 +28,12 @@ class OneProduct extends Component {
     const currentUser = this.props.location?.state?.currentUser
       ? this.props.location.state.currentUser
       : this.state.user;
-
     this.setState({
       currentProduct: productDetail, // this is our reference
       orderItem: productDetail, // this is going to change
       isInShopBag: productDetail.inShopBag, //true or false
+      quantity: productDetail.count,
+      total: productDetail.total,
       user: currentUser,
     });
   }
@@ -41,38 +41,54 @@ class OneProduct extends Component {
   // handle each option in product description
 
   handleItem = (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     const { value, name } = e.target;
-    console.log("this is value", value);
-    console.log("this is name", name);
-    // const { product } = this.state;
-    // console.log("COLOR", value);
+    console.log('THIS IS VALUE', value)
+    console.log('THIS IS NAME', name)
     this.setState((prevState) => ({
-      // ...prevState,
+      ...prevState,
       orderItem: {
         ...prevState.orderItem,
         [name]: value,
-        inShopBag: true,
       },
     }));
-    console.log("this is our order", this.state.orderItem);
   };
 
-  handleClick = () => {
+  handleItemInBag = (e) => {
+    const { name, value } = e.target;
+    const { user, orderItem, shoppingBag } = this.state;
+    const currentState = user;
+    orderItem.inShopBag = true;
+    currentState.userShoppingCart.items.push(orderItem);
+    shoppingBag.push(orderItem)
+    currentState[name] = value;
     this.setState((state) => ({
+      shoppingBag: [...shoppingBag],
+      user: currentState,
       isInShopBag: !state.isInShopBag,
     }));
+    console.log("USER USER USER", this.state.user);
   };
 
-  addToCart = (order) => {
-    const { user } = this.state
-    const theShoppingBag = user.userShoppingCart.items;
+  // handleSubmit(event) {
+  //   alert('A name was submitted: ' + this.state.value);
+  //   event.preventDefault();
+  // }
 
-    theShoppingBag.map((eachItem) =>
-      eachItem._id === order._id ? "Item already added!!" : theShoppingBag.push(order)
-    );
+  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log("HELLO");
+    const { orderItem } = this.state
+    
+    const item = { orderItem }
+    
+    axios
+    .post('http://localhost:3001/api/shopping-bag', item, {withCredentials: true})
+    .then((res) => console.log('New order created', res))
+    .catch(err => {console.log(err)})
   };
-
+  
   render() {
     const {
       name,
@@ -84,16 +100,7 @@ class OneProduct extends Component {
       id,
     } = this.state.currentProduct;
 
-    const { user, orderItem } = this.state;
-    console.log(this.props.location.state);
-
-    console.log("this is current Product ++++++++", this.state.currentProduct);
-
-    console.log("this is orderItem", this.state.orderItem);
-
-    console.log("this is shopping bag", this.state.shoppingBag);
-
-    console.log("this is user............", this.state.user);
+    const { isInShopBag, user, orderItem } = this.state;
     return (
       <section>
         <form onSubmit={this.handleSubmit} className="container">
@@ -138,19 +145,26 @@ class OneProduct extends Component {
                       })}
                   </select>
                 </div>
-
-                <Link
-                  to={{
-                    pathname: `/shopping-bag/${user._id}`,
-                    state: {
-                      item: orderItem,
-                    },
-                  }}
+                <button
+                  disabled={isInShopBag ? true : false}
+                  onClick={this.handleItemInBag}
                 >
-                  <button className="add-item btn btn-lg btn-dark btn-block text-uppercase">
-                    Add to Shopping Bag
-                  </button>
-                </Link>
+                  {isInShopBag ? <p disabled>In Bag</p> : <p>Add to bag</p>}
+                </button>
+                
+
+                {/* <Link
+                to={{
+                  pathname: `/shopping-bag/${user._id}`,
+                  state: {
+                    productDetail: orderItem,
+                    currentUser: user
+                  },
+                }}> */}
+                <button type="submit">
+                  Go to Shopping Bag
+                </button>
+                {/* </Link> */}
 
                 <div>
                   <i className="far fa-heart heart-click-item"></i>
