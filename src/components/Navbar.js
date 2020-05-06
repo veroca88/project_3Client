@@ -50,7 +50,7 @@ export default function NavbarPage() {
                       <Link to={{
                         pathname:`/shopping-bag/${currentUser._Id}`,
                         state: {
-                          currentUser
+                          currentUser: currentUser
                         }
                       }}
                       className="link-navbar">

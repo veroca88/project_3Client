@@ -59,6 +59,7 @@ class OneProduct extends Component {
     const { user, orderItem, shoppingBag } = this.state;
     const currentState = user;
     orderItem.inShopBag = true;
+    orderItem.quantity = 1;
     currentState.userShoppingCart.items.push(orderItem);
     shoppingBag.push(orderItem)
     currentState[name] = value;
@@ -79,13 +80,20 @@ class OneProduct extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     // console.log("HELLO");
-    const { orderItem } = this.state
+    const { orderItem, user } = this.state
     
     const item = { orderItem }
     
     axios
     .post('http://localhost:3001/api/shopping-bag', item, {withCredentials: true})
-    .then((res) => console.log('New order created', res))
+    .then((res) => { console.log('New order created', res)
+    this.setState(prevState => ({
+      ...prevState,
+      currentUser: user,
+      orderItem : {...orderItem}
+    }));
+    this.props.history.push('/');
+  })
     .catch(err => {console.log(err)})
   };
   
@@ -146,25 +154,26 @@ class OneProduct extends Component {
                   </select>
                 </div>
                 <button
+                className="btn-item btn btn-sm btn-dark btn-block text-uppercase"
                   disabled={isInShopBag ? true : false}
                   onClick={this.handleItemInBag}
                 >
-                  {isInShopBag ? <p disabled>In Bag</p> : <p>Add to bag</p>}
+                  {isInShopBag ? <h6 disabled>In Bag</h6> : <h6>Add to bag</h6>}
                 </button>
                 
 
-                {/* <Link
+                <Link as="input" type="button"
                 to={{
                   pathname: `/shopping-bag/${user._id}`,
                   state: {
-                    productDetail: orderItem,
+                    orderItem: orderItem,
                     currentUser: user
                   },
-                }}> */}
-                <button type="submit">
+                }}>
+                <button className="btn-item btn btn-sm btn-dark btn-block text-uppercase" type="submit">
                   Go to Shopping Bag
                 </button>
-                {/* </Link> */}
+                </Link>
 
                 <div>
                   <i className="far fa-heart heart-click-item"></i>
