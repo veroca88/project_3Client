@@ -112,6 +112,7 @@ export default class ShoppingBag extends Component {
                           <td>
                             <img
                               className="shop-bag-img"
+                              alt={eachItem.name}
                               src={eachItem.image}
                             ></img>
                           </td>

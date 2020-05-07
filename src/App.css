@@ -483,7 +483,38 @@ h1{
     margin: 10%;
   }
 
+.box-btns {
+  display: list-item;
+}
 
+.btn-item {
+  width: 110px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  padding: 3% 6%;
+  margin: 3%;
+  color: #fff;
+  background-color: #343a40;
+  border: solid #343a40 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+  
+.btn-item:hover {
+  background: #4C4D4E;
+  border: solid #4C4D4E 1px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  text-decoration: none;
+}
 
 
 

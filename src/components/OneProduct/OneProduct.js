@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-
 import { Link } from "react-router-dom";
-import PRODUCT_SERVICE from "../services/ProductService";
 import axios from "axios";
-import ShoppingBag from "../ShoppingBag/ShoppingBag";
-
 
 class OneProduct extends Component {
   state = {
@@ -15,7 +11,7 @@ class OneProduct extends Component {
     total: "",
     user: "",
     shoppingBag: [],
-    value: ""
+    value: "",
   };
 
   componentDidMount() {
@@ -41,10 +37,10 @@ class OneProduct extends Component {
   // handle each option in product description
 
   handleItem = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const { value, name } = e.target;
-    console.log('THIS IS VALUE', value)
-    console.log('THIS IS NAME', name)
+    console.log("THIS IS VALUE", value);
+    console.log("THIS IS NAME", name);
     this.setState((prevState) => ({
       ...prevState,
       orderItem: {
@@ -61,7 +57,7 @@ class OneProduct extends Component {
     orderItem.inShopBag = true;
     orderItem.quantity = 1;
     currentState.userShoppingCart.items.push(orderItem);
-    shoppingBag.push(orderItem)
+    shoppingBag.push(orderItem);
     currentState[name] = value;
     this.setState((state) => ({
       shoppingBag: [...shoppingBag],
@@ -76,27 +72,31 @@ class OneProduct extends Component {
   //   event.preventDefault();
   // }
 
-  
   handleSubmit = (e) => {
     e.preventDefault();
     // console.log("HELLO");
-    const { orderItem, user } = this.state
-    
-    const item = { orderItem }
-    
+    const { orderItem, user } = this.state;
+
+    const item = { orderItem };
+
     axios
-    .post(process.env.REACT_APP_SERVER_POINT + "/shopping-bag", item, {withCredentials: true})
-    .then((res) => { console.log('New order created', res)
-    this.setState(prevState => ({
-      ...prevState,
-      currentUser: user,
-      orderItem : {...orderItem}
-    }));
-    this.props.history.push('/');
-  })
-    .catch(err => {console.log(err)})
+      .post(process.env.REACT_APP_SERVER_POINT + "/shopping-bag", item, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("New order created", res);
+        this.setState((prevState) => ({
+          ...prevState,
+          currentUser: user,
+          orderItem: { ...orderItem },
+        }));
+        this.props.history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  
+
   render() {
     const {
       name,
@@ -105,7 +105,6 @@ class OneProduct extends Component {
       material,
       size,
       color,
-      id,
     } = this.state.currentProduct;
 
     const { isInShopBag, user, orderItem } = this.state;
@@ -115,7 +114,7 @@ class OneProduct extends Component {
           <div className="card">
             <div className="row ">
               <div className="col-md-8">
-                <img src={image} className="w-100" />
+                <img alt={name} src={image} className="w-100" />
               </div>
               <div className="col-md-4 info-box">
                 <h4 className="card-title">{name}</h4>
@@ -153,31 +152,40 @@ class OneProduct extends Component {
                       })}
                   </select>
                 </div>
+                <div className="box-btns">
+
+                
                 <button
-                className="btn-item btn btn-sm btn-dark btn-block text-uppercase"
+                  className="btn-item"
                   disabled={isInShopBag ? true : false}
                   onClick={this.handleItemInBag}
                 >
-                  {isInShopBag ? <h6 disabled>In Bag</h6> : <h6>Add to bag</h6>}
+                  {isInShopBag ? <h6 disabled>In Bag</h6> : <h6>Add </h6>}
                 </button>
-                
 
-                <Link as="input" type="button"
-                to={{
-                  pathname: `/shopping-bag/${user._id}`,
-                  state: {
-                    orderItem: orderItem,
-                    currentUser: user
-                  },
-                }}>
-                <button className="btn-item btn btn-sm btn-dark btn-block text-uppercase" type="submit">
-                  Go to Shopping Bag
-                </button>
+                <Link
+                  // as="input"
+                  // type="button"
+                  to={{
+                    pathname: `/shopping-bag/${user._id}`,
+                    state: {
+                      orderItem: orderItem,
+                      currentUser: user,
+                    },
+                  }}
+                >
+                  <button
+                    className="btn-item"
+                    type="submit"
+                  >
+                    <h6>Go to Bag</h6>
+                  </button>
                 </Link>
-
+                </div>
+{/* 
                 <div>
                   <i className="far fa-heart heart-click-item"></i>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
