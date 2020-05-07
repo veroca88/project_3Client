@@ -85,7 +85,7 @@ class OneProduct extends Component {
     const item = { orderItem }
     
     axios
-    .post('http://localhost:3001/api/shopping-bag', item, {withCredentials: true})
+    .post(process.env.REACT_APP_SERVER_POINT + "/shopping-bag", item, {withCredentials: true})
     .then((res) => { console.log('New order created', res)
     this.setState(prevState => ({
       ...prevState,

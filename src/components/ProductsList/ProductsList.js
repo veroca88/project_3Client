@@ -18,7 +18,7 @@ class ProductList extends React.Component {
 
   getProducts = () => {
     axios
-      .get("http://localhost:3001/products")
+      .get(process.env.REACT_APP_SERVER_POINT + "products")
       .then((productsFromAPI) => {
         this.setState({
           postProducts: productsFromAPI.data,
