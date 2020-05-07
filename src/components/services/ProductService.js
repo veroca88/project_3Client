@@ -15,6 +15,10 @@ const PRODUCT_SERVICE = {
     return service.post('/api/product/add-product', productData);
   },
 
+  getProducts(productData) {
+    return service.get('/products', productData)
+  }
+
 
 };
 

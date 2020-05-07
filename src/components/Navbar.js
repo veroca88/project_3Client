@@ -46,7 +46,7 @@ export default function NavbarPage() {
                       My account{" "}
                     </Link>
 
-                    <div className="dropdown">
+                    <div className="link-navbar">
                       <Link to={{
                         pathname:`/shopping-bag/${currentUser._Id}`,
                         state: {
@@ -56,7 +56,7 @@ export default function NavbarPage() {
                       className="link-navbar">
                         Shopping Bag ({currentUser.userShoppingCart.items.length})
                       </Link>
-                      <div className="dropdown-content">
+                      {/* <div className="dropdown-content">
                         <Table className="list-items" size="sm">
                           <tbody>
                             <tr>
@@ -75,7 +75,7 @@ export default function NavbarPage() {
                             </tr>
                           </tbody>
                         </Table>
-                      </div>
+                      </div> */}
                     </div>
                   </>
                 ) : (
@@ -104,7 +104,7 @@ export default function NavbarPage() {
                       <Link to="/shopping-bag" className="link-navbar">
                         Shopping Bag (0)
                       </Link>
-                      <div className="dropdown-content">
+                      {/* <div className="dropdown-content">
                         <Table className="list-items" size="sm">
                           <tbody>
                             <tr>
@@ -123,7 +123,7 @@ export default function NavbarPage() {
                             </tr>
                           </tbody>
                         </Table>
-                      </div>
+                      </div> */}
                     </div>
                   </>
                 )}
