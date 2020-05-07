@@ -11,7 +11,7 @@ const service = axios.create({
 const AUTH_SERVICE = {
   // userData is a placeholder (represents the user's inputs in the signup and login form)
   signup(userData) {
-    console.log('.........',  baseURL)
+    console.log('.........', process.env )
     // const { username, email, password } = req.body; <===> userData
     return service.post('/api/signup', userData);
   },

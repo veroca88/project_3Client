@@ -1,10 +1,8 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
-
-import axios from "axios";
 import Search from "../Search/Search";
 import { AuthContext } from "../context/Authentication";
+import PRODUCT_SERVICE from "../services/ProductService"
 
 class ProductList extends React.Component {
   state = {
@@ -17,8 +15,7 @@ class ProductList extends React.Component {
   }
 
   getProducts = () => {
-    axios
-      .get(process.env.REACT_APP_SERVER_POINT + "products")
+    PRODUCT_SERVICE.getProducts()
       .then((productsFromAPI) => {
         this.setState({
           postProducts: productsFromAPI.data,
@@ -50,35 +47,13 @@ class ProductList extends React.Component {
     });
   };
 
-  // // handle each option in product description
-
-  // handleItem = (e) => {
-  //   // e.preventDefault()
-  //   const { value, name } = e.target;
-  //   console.log("this is value", value);
-  //   console.log("this is name", name);
-  //   // const { product } = this.state;
-  //   // console.log("COLOR", value);
-  //   this.setState((prevState) => ({
-  //     // ...prevState,
-  //     orderItem: {
-  //       ...prevState.orderItem,
-  //       [name]: value,
-  //       inShopBag: true,
-  //     },
-  //   }));
-  //   console.log("this is our order", this.state.orderItem);
-  // };
-
-  // addToCart = () => {};
-
   render() {
     return (
       <AuthContext.Consumer>
         {(context) => {
           const { currentUser } = context.state;
 
-          const { search, postProducts, orderItem } = this.state;
+          const { search } = this.state;
 
           return (
             <>
