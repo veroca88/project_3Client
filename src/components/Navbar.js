@@ -10,19 +10,43 @@ export default function NavbarPage() {
         const { isLoggedIn, currentUser } = context.state;
         console.log('THIS IS SHOPPING BAG', currentUser)
         return (
+        <>          
+          <Navbar
+            id="navbar-logo"
+            collapseOnSelect
+            expand="lg"
+            // bg="light"
+            variant="light"
+          >
+            <Link to="/">
+            <img className="logo-brand" src="green.png" alt="logo brand"></img>
+
+            </Link>
+
+            <Navbar.Brand>
+              <Link className="logo-brand" to="/">
+                Aware
+              </Link>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          </Navbar>
+
+
+
+
+
+
+
+
+
           <Navbar
             id="navbar"
             collapseOnSelect
             expand="lg"
-            bg="light"
+            // bg="light"
             variant="light"
           >
-            <img className="logo-brand" src="green.png" alt="logo brand"></img>
-            <Navbar.Brand>
-              <Link className="link-navbar" to="/">
-                Aware
-              </Link>
-            </Navbar.Brand>
+            
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
@@ -54,7 +78,7 @@ export default function NavbarPage() {
                         }
                       }}
                       className="link-navbar">
-                        Shopping Bag ({currentUser.userShoppingCart.items.length})
+                        <img src="commerce-and-shopping_24x24.png"></img> ({currentUser.userShoppingCart.items.length})
                       </Link>
                       {/* <div className="dropdown-content">
                         <Table className="list-items" size="sm">
@@ -130,6 +154,7 @@ export default function NavbarPage() {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
+          </>
         );
       }}
     </AuthContext.Consumer>

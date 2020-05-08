@@ -38,6 +38,11 @@ header {
 
 #navbar {
   font-size: 1.3rem;
+  flex-flow: column;
+}
+
+#navbar-logo {
+  flex-flow: column;
 }
 
 .dropdown {
@@ -76,6 +81,17 @@ header {
 .logo-brand {
   width: 70px;
   position: relative;
+
+
+  font-family: 'Kalam', cursive;
+  font-size: 45px;
+  color: #000000;  
+  text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000000;
 }
  /* Logo Brand */
 
@@ -260,6 +276,7 @@ header {
 html,body{
   width: 100%;
   height: 100%;
+  padding: 1% 8.5%;
 }
 
 .container{

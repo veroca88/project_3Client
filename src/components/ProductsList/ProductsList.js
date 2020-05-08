@@ -8,6 +8,8 @@ class ProductList extends React.Component {
   state = {
     postProducts: null,
     search: [],
+
+    incrementNum: ""
   };
 
   componentDidMount() {
@@ -46,6 +48,20 @@ class ProductList extends React.Component {
       postProducts: postProducts,
     });
   };
+
+  getItem = id => {
+    const product = this.state.postProducts.find(item => item.id === id);
+    return product;
+  };
+
+  increment = (e) => {
+    e.preventDefault()
+      this.setState(prevState => ({
+        incrementNum: prevState.count++
+      }))
+      console.log('INCREMENT', this.state.incrementNum)
+    }
+
 
   render() {
     return (
