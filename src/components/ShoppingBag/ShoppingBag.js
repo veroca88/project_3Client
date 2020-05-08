@@ -14,71 +14,29 @@ export default class ShoppingBag extends Component {
     quantity: "",
     price: "",
     totalItem: "",
-    totalPurchase: []
-  }
+    totalPurchase: [],
+    finalTotal: "",
 
-  componentDidMount() {
-    // const { productDetail } =  this.props.location.state
-    console.log("ComponentDidMount in shopping cart..", this.props.location);
 
-    const currentUser = this.props.location?.state?.currentUser
-      ? this.props.location.state.currentUser
-      : this.state.user;
-    this.setState({
-      item: currentUser.userShoppingCart.items,
-      user: currentUser,
-      quantity: currentUser.userShoppingCart.items.quantity,
-    });
+    orderOrder: ""
   }
 
   getTotalItem = (quantity, price ) => {
-    let total = quantity * price;
-    // this.state.totalItem = total
-    // this.state.totalPurchase = Number(this.state.totalItem)
-
-    // const { userShoppingCart } = this.state.user
-  //   console.log('IIIIIIIIIIIIIIIIIIIIIII', this.state.user.userShoppingCart)
-  //   let valueShoppingBag = this.props.location?.state?.currentUser?.userShoppingCart
-    
-  //   const search = 'items'
-  //    const filtered = valueShoppingBag.filter(item => {
-  //     return Object.keys(item).some((key)=>item[key].includes(search));
-  //    })
-  //    console.log(filtered)
-     
- 
-  // }
-
-
-
-
-    // this.state.totalPurchase = this.state.totalPurchase.push(Number(this.state.totalItem))
-
-
-
-
-
-
-    console.log('..............', this.state.totalItem)
-    console.log('..............', this.state.totalPurchase)
+    let total = Number(quantity * price);
+    this.state.totalPurchase = total;
     return total
-    // this.setState(prevState => ({
-    //   ...prevState,
-    //   totalItem: total
-    // }))
   }
 
-  // getTotalPurchase = () => {
-   
+  handleTotal = (user) => {
+    if (user.userShoppingCart.items.length > 1) {
+      let finalTotal = user.userShoppingCart.items.map(item => item.cost).reduce((a, cv) => a + cv) 
+      return finalTotal
+    } else {
+      return user.userShoppingCart.items[0].cost
+    }
+    
+  }
 
-  // }
-
-  // handleChange = (e) => {
-  //   e.preventDEfault();
-  //   const {name, value} = e.target
-  //   console.log('THIS IS VALUE', value)
-  //   console.log('THIS IS NAME', name)
-  // }
 
 
 
@@ -95,7 +53,7 @@ export default class ShoppingBag extends Component {
           <>
             {isLoggedIn && currentUser?.userShoppingCart?.items?.length > 0? (
               <div className="shop-bag">
-                <Table className="center" responsive>
+                <Table  className="center" responsive>
                   <thead>
                     <tr>
                       <th>Product</th>
@@ -106,9 +64,9 @@ export default class ShoppingBag extends Component {
                       <th>Total</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody >
                      {currentUser.userShoppingCart?.items?.map((eachItem, index) =>                     
-                     <tr key={index}> 
+                     <tr  key={index}> 
                           <td>
                             <img
                               className="shop-bag-img"
@@ -128,7 +86,7 @@ export default class ShoppingBag extends Component {
                                 className="quantity"
                                 min="0"
                                 name="quantity"
-                                value={eachItem.quantity}
+                                defaultValue="1"
                                 type="number"
                               />
                               <button
@@ -146,7 +104,7 @@ export default class ShoppingBag extends Component {
                   <thead>
                     <tr>
                      <th>TOTAL PURCHASE:</th>
-                     <th></th>
+                     <th>$ {this.handleTotal(currentUser)}</th>
                     </tr>
                   </thead>
                   

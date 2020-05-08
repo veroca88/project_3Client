@@ -182,10 +182,6 @@ class OneProduct extends Component {
                   </button>
                 </Link>
                 </div>
-{/* 
-                <div>
-                  <i className="far fa-heart heart-click-item"></i>
-                </div> */}
               </div>
             </div>
           </div>

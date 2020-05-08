@@ -20,7 +20,7 @@ export default function NavbarPage() {
             <img className="logo-brand" src="green.png" alt="logo brand"></img>
             <Navbar.Brand>
               <Link className="link-navbar" to="/">
-                Ecommerce
+                Aware
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
