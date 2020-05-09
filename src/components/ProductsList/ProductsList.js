@@ -95,8 +95,8 @@ class ProductList extends React.Component {
                               alt={eachProduct.name}
                             />
                           </Link>
-                          <p>{eachProduct.name}</p>
-                          <p>${eachProduct.cost}</p>
+                          <p >{eachProduct.name}</p>
+                          <p >${eachProduct.cost}</p>
                         </div>
                       </div>
                     ))

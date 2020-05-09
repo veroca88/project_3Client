@@ -126,7 +126,7 @@ export default function NavbarPage() {
                     </div>
                     <div className="dropdown">
                       <Link to="/shopping-bag" className="link-navbar">
-                        Shopping Bag (0)
+                      <img src="commerce-and-shopping_24x24.png"></img> (0)
                       </Link>
                       {/* <div className="dropdown-content">
                         <Table className="list-items" size="sm">
