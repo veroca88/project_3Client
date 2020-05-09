@@ -15,10 +15,10 @@
 .App {
   text-align: center;
 }
-
+/* 
 h1, h2, h3, h4, h5 {
   font-family: 'Roboto Condensed', sans-serif;
-}
+} */
 
 header {
   font-size: 16px;
@@ -285,6 +285,7 @@ html,body{
   height: 100%;
   padding: 1% 8.5%;
   font-family: 'ABeeZee', sans-serif;
+  font-size: 1.05rem;
 
 }
 
@@ -294,14 +295,15 @@ html,body{
   width: 1140px;
 }
 
-h1{
+/* h1{
   position: relative;
-  margin-bottom: 45px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 44px;
-  text-transform: uppercase;
-  color: #424242;
-}
+  margin: 7%;
+  /* font-family: 'Oswald', sans-serif; */
+  /* font-family: 'ABeeZee', sans-serif;
+  font-size: 40px; */
+  /* text-transform: uppercase; */
+  /* color: #424242; */
+
 
 .gallery-wrap {
   display: flex;
@@ -404,7 +406,7 @@ h1{
 /* Shopping Bag */
 
 .shop-bag {
-  margin: 5% 10%;
+  margin: 5% 7%;
 }
 
 .shop-bag-img {
@@ -648,7 +650,7 @@ span {
   display: inline-block;
   height: 50px;
   width: 176px;
-  margin: 0 40px 0 16px;
+  margin: 0 40px 5px 16px;
   box-sizing: border-box;
   border: transparent;
   border-radius: 60px;
@@ -667,5 +669,41 @@ span {
   background-color: #79b0a1;
 }
 
+*======================
+    404 page
+=======================*/
 
 
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+ 
+ background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+ }
+ 
+ 
+ .four_zero_four_bg h1{
+ font-size: 45px;
+ margin-bottom: 3%;
+ }
+ 
+  .four_zero_four_bg h3{
+			 font-size:50px;
+			 }
+			 
+			 /* .link_404{			 
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;} */
+	.contant_box_404{ margin-top:-50px;}
+
+.btn-center {
+  margin: 5% 0% 0% 30%;
+}

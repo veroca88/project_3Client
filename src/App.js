@@ -11,6 +11,7 @@ import ProductsList from "./components/ProductsList/ProductsList";
 import OneProduct from "./components/OneProduct/OneProduct";
 import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
 import DailyInspirational from "./pages/DailyInspirational";
+import Checkout from "./components/ShoppingBag/Checkout";
 
 //Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -34,6 +35,7 @@ class App extends React.Component {
           <Route exact path="/products" component={ProductsList}/>
           <Route exact path="/products/:productId" component={OneProduct}/>
           <Route exact path="/shopping-bag/:userId" component={ShoppingBag}/>
+          <Route exact path="/checkout" component={Checkout}/>
           
           {/* <Route exact path="/details" render={(props) => (<OneProduct {...props}/>)} /> */}
           {/* <Route exact path='/details' render={(props) => (<DisplayProducts {...props} getProducts={this.getProducts} />

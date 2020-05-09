@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import Table from "react-bootstrap/Table";
 
+import { Link } from "react-router-dom"
+
 import { AuthContext } from "../context/Authentication";
 
 import EmptyShoppingBag from "../ShoppingBag/EmptyShoppingBag";
@@ -109,6 +111,12 @@ export default class ShoppingBag extends Component {
                   </thead>
                   
                 </Table>
+                <div className="btn-center product-price-btn">
+                  <Link to="/checkout">
+                  <button>CheckOut</button>
+                  </Link>
+                </div>
+
               </div>
             ) : (
               <EmptyShoppingBag />
