@@ -50,7 +50,7 @@ export default function NavbarPage() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <Link to="/dailyInspiration" className="link-navbar">
+                <Link to="/daily-inspiration" className="link-navbar">
                   Daily Inspiration
                 </Link>
                 <Link className="link-navbar" to="/products">

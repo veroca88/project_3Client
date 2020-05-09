@@ -152,11 +152,14 @@ class OneProduct extends Component {
                       })}
                   </select>
                 </div>
-                <div className="box-btns">
+                <div 
+                className="product-price-btn"
+                // className="box-btns"
+                >
 
                 
                 <button
-                  className="btn-item"
+                  // className="product-price-btn"
                   disabled={isInShopBag ? true : false}
                   onClick={this.handleItemInBag}
                 >
@@ -175,7 +178,7 @@ class OneProduct extends Component {
                   }}
                 >
                   <button
-                    className="btn-item"
+                    // className="product-price-btn"
                     type="submit"
                   >
                     <h6>Go to Bag</h6>

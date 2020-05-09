@@ -10,6 +10,7 @@ import Profile from "./components/User/Profile";
 import ProductsList from "./components/ProductsList/ProductsList";
 import OneProduct from "./components/OneProduct/OneProduct";
 import ShoppingBag from "./components/ShoppingBag/ShoppingBag";
+import DailyInspirational from "./pages/DailyInspirational";
 
 //Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -27,6 +28,7 @@ class App extends React.Component {
         <Switch>
            <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/daily-inspiration" component={DailyInspirational} />
           <Route exact path="/" component={Home} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/products" component={ProductsList}/>
