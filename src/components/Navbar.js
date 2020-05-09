@@ -78,7 +78,7 @@ export default function NavbarPage() {
                         }
                       }}
                       className="link-navbar">
-                        <img src="commerce-and-shopping_24x24.png"></img> ({currentUser.userShoppingCart.items.length})
+                        <img src="commerce-and-shopping_24x24.png"></img> ({currentUser.userShoppingCart?.items?.length})
                       </Link>
                       {/* <div className="dropdown-content">
                         <Table className="list-items" size="sm">
