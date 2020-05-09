@@ -105,7 +105,7 @@ export default class ShoppingBag extends Component {
                 <Table>
                   <thead>
                     <tr>
-                     <th>TOTAL PURCHASE:</th>
+                     <th className="total-pur">TOTAL PURCHASE:</th>
                      <th>$ {this.handleTotal(currentUser)}</th>
                     </tr>
                   </thead>

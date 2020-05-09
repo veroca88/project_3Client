@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom'
 
 export default function Checkout() {
     return (
-        <section class="page_404">
-	<div class="container">
-		<div class="row">	
-		<div class="col-sm-12 ">
-		<div class="col-sm-10 col-sm-offset-1  text-center">
-		<div class="four_zero_four_bg">
-			<h1 class="text-center ">Ups! Look like I'm still working on it</h1>
+        <section className="page_404">
+	<div className="container">
+		<div className="row">	
+		<div className="col-sm-12 ">
+		<div className="col-sm-10 col-sm-offset-1  text-center">
+		<div className="four_zero_four_bg">
+			<h1 className="text-center ">Ups! Look like I'm still working on it</h1>
 		
 		
 		</div>
 		
-		<div class="contant_box_404">
-		<h3 class="h2">
-		Coming Soon!!
+		<div className="contant_box_404">
+		<h3 className="total-pur h2">
+		. . . Coming Soon!!
 		</h3>
 		
 		{/* <p>..Thank you!</p> */}

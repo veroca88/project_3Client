@@ -168,6 +168,10 @@ a:hover {
 .value-display {
   text-align: right;
 }
+
+.total-pur {
+  text-align: end;
+}
 /* Search placeholder */
 
 #search {
@@ -669,9 +673,9 @@ span {
   background-color: #79b0a1;
 }
 
-*======================
+/* *======================
     404 page
-=======================*/
+=======================*/ */
 
 
 .page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
@@ -684,6 +688,7 @@ span {
  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
     height: 400px;
     background-position: center;
+    margin-left: 17%;
  }
  
  
@@ -705,5 +710,5 @@ span {
 	.contant_box_404{ margin-top:-50px;}
 
 .btn-center {
-  margin: 5% 0% 0% 30%;
+  margin: auto;
 }

@@ -49,9 +49,10 @@ export default class RandomProduct extends Component {
                 <h1>{dailyProduct?.name}</h1>
                 <h2>by AWARE</h2>
                 <p>
-                  Harvest Vases are a reinterpretationof peeled fruits and
-                  vegetables as functional objects. The surfaces appear to be
-                  sliced and pulled aside, allowing room for growth.{" "}
+                “You cannot protect the environment unless you 
+                empower people, you inform them, and you help 
+                them understand that these resources are their 
+                own, that they must protect them.”                 
                 </p>
               </div>
               <div className="product-price-btn">

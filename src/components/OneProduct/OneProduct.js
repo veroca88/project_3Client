@@ -116,7 +116,7 @@ class OneProduct extends Component {
               <div className="col-md-8">
                 <img alt={name} src={image} className="w-100" />
               </div>
-              <div className="col-md-4 info-box">
+              <div className="col-md-4 info-box product info">
                 <h4 className="card-title">{name}</h4>
                 <hr />
                 <p className="card-text">

@@ -49,7 +49,7 @@ function Login() {
                           onChange={handleUpdateInput}
                         />
                       </label>
-                      {/* <div>
+                      <div>
                       <label className="form-label-group" htmlFor="isDesigner">
                         Designer?
                         <input
@@ -61,7 +61,7 @@ function Login() {
                           value={designer}
                         />
                       </label>
-                      </div> */}
+                      </div>
 
 
                       <hr className="my-4" />
